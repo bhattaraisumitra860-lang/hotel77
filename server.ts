@@ -690,7 +690,7 @@ async function startServer() {
     });
   }
 
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT) || 3000;
   app.listen(PORT, "0.0.0.0", () => {
     console.log(`[Hotel 77 CMS Engine] Live and listening on host 0.0.0.0, port ${PORT}`);
   });
