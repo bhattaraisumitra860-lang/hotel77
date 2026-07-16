@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #hoverBox {
+      width: 200px;
+      height: 100px;
+      background-color: lightblue;
+      margin: 20px auto;
+      line-height: 100px;
+    }
+  </style>
+</head>
+<body onload="pageLoaded()">
+
+  <h1>Demo</h1>
+
+  
+  <button onclick="buttonClicked()">Click Me!</button>
+<div id="hoverBox" onmouseover="mouseOver()" onmouseout="mouseOut()">
+    Here
+  </div>
+  <input type="text" placeholder="Type something..." onkeydown="keyPressed(event)">
+<p id="output"></p>
+  <script>
+    function pageLoaded() {
+      alert("Page has loaded successfully!");
+    }
+
+    function buttonClicked() {
+      document.getElementById("output").innerText = "Button was clicked!";
+    }
+
+    function mouseOver() {
+      document.getElementById("hoverBox").style.backgroundColor = "orange";
+    }
+
+    function mouseOut() {
+      document.getElementById("hoverBox").style.backgroundColor = "lightblue";
+    }
+
+    function keyPressed(event) {
+      document.getElementById("output").innerText = `Key pressed: ${event.key}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "Hotel 77",
+  "description": "Premium luxury boutique hotel website featuring direct WhatsApp/phone concierge connections, tailored catalog rooms filtering, and custom cms dashboard control panels.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
