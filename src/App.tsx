@@ -63,18 +63,24 @@ export default function App() {
   // Fetch initial raw public CMS data
   const fetchPublicData = async () => {
     try {
-      // Timeout after 5s so the fallback kicks in on static hosting (Vercel)
+      // Timeout after 3s so the fallback kicks in quickly on static hosting (Vercel)
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      const timeoutId = setTimeout(() => controller.abort(), 3000);
       const res = await fetch("/api/public/data", { signal: controller.signal });
       clearTimeout(timeoutId);
-      if (res.ok) {
+
+      // Check content-type before trying to parse JSON.
+      // On Vercel (static host), /api/public/data returns index.html (text/html)
+      // which means there's no backend — fall back to default data immediately.
+      const contentType = res.headers.get("content-type") || "";
+      if (res.ok && contentType.includes("application/json")) {
         const payload = await res.json();
         setDbData(payload);
         setIsLoading(false);
         return;
       }
-      console.warn("API returned non-ok status, falling back to static default data.");
+      // Not JSON → no backend server → use static fallback
+      console.warn("No backend API detected, using static default data for Vercel hosting.");
     } catch (err) {
       console.error("Could not fetch Hotel 77 public data, falling back to static default data", err);
     }
