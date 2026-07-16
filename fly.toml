@@ -1,7 +1,11 @@
-app = "hotel77-london"
-primary_region = "lhr"
+app = "hotel-77"
+primary_region = "iad"
 
 [build]
+
+[env]
+  PORT = "8080"
+  NODE_ENV = "production"
 
 [http_service]
   internal_port = 8080
@@ -14,7 +18,3 @@ primary_region = "lhr"
   memory = "256mb"
   cpu_kind = "shared"
   cpus = 1
-
-[mounts]
-  source = "hotel77_data"
-  destination = "/app/data"
