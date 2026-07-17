@@ -285,7 +285,7 @@
       "classic-double": 12
     }
   },
-  "adminPasswordHash": "Anush@123",
+  "adminPasswordHash": "$2b$10$et5sPmf/6F907QEk5LVrL.a.wJ3KKZcftZG9fAYhrzBpxC2bWDkAq",
   "activeSessions": [
     "tok-xlpwyrefia93i5nkuxoqrt",
     "tok-b695hnw19lblkr1b58qcdk"
