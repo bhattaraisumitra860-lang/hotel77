@@ -2,127 +2,162 @@ import { SiteSettings, Room, GalleryItem, Testimonial, CMSPage, MenuItem, Analyt
 
 export const defaultSettings: SiteSettings = {
   hotelName: "Hotel 77",
-  tagline: "Where Heritage Meets Contemporary Elegance",
-  logoUrl: "",
+  tagline: "Comfort, Hospitality & Convenience in Shreegaun, Jakhera, Lamahi",
+  logoUrl: "/uploads/logo.png",
   faviconUrl: "",
-  accentColor: "indigo", // indigo, amber, emerald, rose, slate
-  primaryPhone: "+44 20 7777 0177",
-  secondaryPhone: "+44 20 7777 0277",
-  whatsappNumber: "+44777777177",
-  whatsappPrefilledText: "Hello, I am interested in booking a luxury stay at Hotel 77. Please let me know your rates and availability of suites.",
-  emailAddress: "concierge@hotel77.com",
-  address: "77 Park Lane, London, W1K 1QA, United Kingdom",
-  googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d2483.1895648834947!2d-0.1558231!3d51.509355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487605330e2f8955%3A0xe5eb6c7ebd286d99!2sPark%20Ln%2C%20London!5e0!3m2!1sen!2suk!4v1689000000000!5m2!1sen!2suk",
-  heroImageUrl: "https://images.unsplash.com/photo-1542314831-c6a420828f41?auto=format&fit=crop&w=800&q=80",
+  accentColor: "indigo",
+  primaryPhone: "9847871687",
+  secondaryPhone: "9857841687",
+  whatsappNumber: "9847871687",
+  whatsappPrefilledText: "Hello, I am interested in booking a stay at Hotel 77. Please let me know your rates and availability.",
+  emailAddress: "hotel77@gmail.com",
+  address: "Shreegaun, Jakhera, Lamahi, Dang, Nepal",
+  googleMapsEmbedUrl: "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3527.2722631552697!2d82.5657133753295!3d27.862905676093725!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3997a36fb3930c71%3A0x49ac19d8da197d81!2sHotel%2077!5e0!3m2!1sen!2snp!4v1781294849874!5m2!1sen!2snp\" width=\"800\" height=\"600\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+  heroImageUrl: "/uploads/exterior-1.png",
   instagramUrl: "https://instagram.com/hotel77",
-  facebookUrl: "https://facebook.com/hotel77",
-  twitterUrl: "https://twitter.com/hotel77",
-  seoTitle: "Hotel 77 | Luxury Boutique Hotel",
-  seoDescription: "Experience unparalleled contemporary luxury at Hotel 77, located in the prestigious heart of London. Impeccable bespoke services and timeless suites await.",
-  seoKeywords: "luxury hotel london, boutique hotel west end, park lane suites, hotel 77, exclusive accommodation",
-  footerContent: "© 2026 Hotel 77 Operations Ltd. Crafted for direct booking excellence.",
+  facebookUrl: "",
+  twitterUrl: "",
+  seoTitle: "Hotel 77 | Lamahi's Premier Hotel",
+  seoDescription: "Enjoy comfortable stays at Hotel 77 in Shreegaun, Jakhera, Lamahi, Dang, Nepal. Standard, Deluxe, and Family Suite rooms with Wi-Fi, AC, and warm hospitality.",
+  seoKeywords: "hotel in lamahi, hotel in dang, hotel 77, shreegaun hotel, jakhera hotel, nepal hotel, budget hotel lamahi",
+  footerContent: "© 2026 Hotel 77. Shreegaun, Jakhera, Lamahi, Dang, Nepal. All rights reserved.",
   maintenanceMode: false,
   googleReviewUrl: ""
 };
 
 export const defaultRooms: Room[] = [
   {
-    id: "suite-77",
-    name: "The Signature Suite 77",
-    shortDescription: "Our flagship double-level apartment featuring breathtaking views and bespoke mid-century design.",
-    fullDescription: "Designed for the ultimate connoisseur, The Signature Suite 77 combines high-ceilinged Edwardian architecture with minimalist German engineering. Enjoy a private marble fireplace, floor-to-ceiling soundproof acoustic windows, and a state-of-the-art master bedroom. Includes round-the-clock personal butler service, complimentary airport limousine transfer, and private cocktail cupboard setup.",
-    capacityGuests: 4,
+    id: "room-110",
+    name: "Suite – Room 110",
+    shortDescription: "Spacious family suite designed for comfort, relaxation, and memorable stays.",
+    fullDescription: "Room 110 is one of our premium suites, offering generous space for families and small groups. Featuring one double bed and one single bed, the suite comfortably accommodates up to three guests. Large windows fill the room with natural light, while blackout curtains provide restful sleep. Modern amenities, complimentary Wi-Fi, air conditioning, and a peaceful atmosphere make this suite ideal for both short and extended stays.",
+    capacityGuests: 3,
     capacityBeds: 2,
-    amenities: ["24/7 Butler Support", "Private Bar & Lounge", "Carrara Marble Fireplace", "Limousine Services", "Soundproof Acoustic Windows", "Dyson Supersonic Dryer", "Frette Linens", "Bang & Olufsen Audio"],
-    images: [
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"
-    ],
+    amenities: ["Air Conditioning", "Free Wi-Fi", "Double Bed", "Single Bed", "Fresh Linen", "Wardrobe", "Dressing Mirror", "Bedside Table", "Large Windows", "Blackout Curtains", "Daily Housekeeping", "Attached Bathroom", "Hot & Cold Shower", "Toiletries", "Towels", "Power Outlets", "Room Service"],
+    images: ["/uploads/110.png"],
     featured: true,
     enabled: true,
-    category: "Presidential Suit"
+    category: "Suite"
   },
   {
-    id: "deluxe-park",
-    name: "Deluxe Park King Room",
-    shortDescription: "Elegant spatial beauty overlooking beautiful greenery with private workspace and rain shower.",
-    fullDescription: "Perfect for corporate leadership or executive travelers, the Deluxe Park Room offers a stunning vista of Westminster and the Royal Parks. Features an curated selection of modern photography, an ergonomic solid walnut writing desk, automatic circadian dimming lighting, and a rainfall sensory wet-room clad in graphite slate.",
-    capacityGuests: 2,
-    capacityBeds: 1,
-    amenities: ["Sensory Rain Shower", "Pre-stocked Wine Cooler", "Walnut Executive Desk", "Nespresso Expert Machine", "Circadian Smart Lighting", "Plush Kimonos & Slippers"],
-    images: [
-      "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80"
-    ],
+    id: "room-107",
+    name: "Suite – Room 107",
+    shortDescription: "A spacious suite with a cozy seating area for families and small groups.",
+    fullDescription: "Room 107 is a spacious suite offering one double bed and one single bed for up to three guests. The room includes a comfortable seating area with a table and two chairs, perfect for enjoying meals, conversations, or work. Air conditioning, complimentary Wi-Fi, and modern amenities ensure a relaxing and enjoyable stay.",
+    capacityGuests: 3,
+    capacityBeds: 2,
+    amenities: ["Air Conditioning", "Free Wi-Fi", "Double Bed", "Single Bed", "Seating Area", "Dining Table", "Two Chairs", "Fresh Linen", "Wardrobe", "Dressing Mirror", "Bedside Table", "Blackout Curtains", "Daily Housekeeping", "Attached Bathroom", "Hot & Cold Shower", "Toiletries", "Towels", "Power Outlets", "Room Service"],
+    images: ["/uploads/107.png"],
     featured: true,
     enabled: true,
-    category: "Deluxe King"
+    category: "Suite"
   },
   {
-    id: "executive-suite",
-    name: "Executive Penthouse Suite",
-    shortDescription: "Plush elevated living spanning the top floor with wrap-around private terrace balcony.",
-    fullDescription: "Occupying the entire western crest of our top floor, the Penthouse Suite is defined by its architectural layout and panoramic wrap-around terrace. An open-concept living area splits into a curated private library, entertainment parlor, and a grand master bedroom detailed with solid brass trim and hand-tufted carpets.",
+    id: "room-105",
+    name: "Deluxe Room – Room 105",
+    shortDescription: "Comfortable deluxe accommodation with a king-size bed and private seating area.",
+    fullDescription: "Room 105 is a spacious Deluxe Room featuring a king-size bed and a cozy seating area with a table and two chairs. Ideal for couples and business travelers, the room offers air conditioning, complimentary Wi-Fi, and all essential amenities for a relaxing and comfortable stay.",
     capacityGuests: 2,
     capacityBeds: 1,
-    amenities: ["Private Wrap-around Balcony", "Walk-in Dressing Parlor", "Bespoke Whiskey Cabinet", "Deep Soaking Freestanding Tub", "Smart Heated Toilets", "Private Lift Entrance"],
-    images: [
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80"
-    ],
+    amenities: ["Air Conditioning", "Free Wi-Fi", "King Bed", "Seating Area", "Dining Table", "Two Chairs", "Fresh Linen", "Wardrobe", "Dressing Mirror", "Bedside Table", "Blackout Curtains", "Daily Housekeeping", "Attached Bathroom", "Hot & Cold Shower", "Toiletries", "Towels", "Power Outlets", "Room Service"],
+    images: ["/uploads/105.png"],
     featured: true,
     enabled: true,
-    category: "Penthouse"
+    category: "Deluxe Room"
   },
   {
-    id: "classic-double",
-    name: "Atelier Double Room",
-    shortDescription: "Cozy metropolitan sanctuary celebrating British heritage with elegant bespoke textures.",
-    fullDescription: "Our entry room celebrates curated micro-living. Features customized wool fabrics, curated travel literature collections, a sleek smart TV screen, and a beautiful walk-in tiled shower suite. Perfect for solo explorers or couples demanding high-quality standards in a compact city sanctuary.",
+    id: "room-101",
+    name: "Deluxe Room – Room 101",
+    shortDescription: "A modern deluxe room offering comfort, convenience, and peaceful relaxation.",
+    fullDescription: "Room 101 is a well-appointed Deluxe Room with a comfortable king-size bed and air conditioning. Designed for couples and solo travelers, it provides complimentary Wi-Fi, quality furnishings, and a peaceful environment for both leisure and business stays.",
     capacityGuests: 2,
     capacityBeds: 1,
-    amenities: ["Heritage Wool Linens", "Smart Apple TV Setup", "Heated Towel Racks", "Organic Botanical Toiletries", "Bespoke Minibar Selection"],
-    images: [
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80"
-    ],
+    amenities: ["Air Conditioning", "Free Wi-Fi", "King Bed", "Fresh Linen", "Wardrobe", "Dressing Mirror", "Bedside Table", "Large Windows", "Blackout Curtains", "Daily Housekeeping", "Attached Bathroom", "Hot & Cold Shower", "Toiletries", "Towels", "Power Outlets", "Room Service"],
+    images: ["/uploads/101.png"],
     featured: false,
     enabled: true,
-    category: "Standard Double"
+    category: "Deluxe Room"
+  },
+  {
+    id: "room-104",
+    name: "Standard Room – Room 104",
+    shortDescription: "Affordable comfort with everything you need for a pleasant stay.",
+    fullDescription: "Room 104 is a comfortable Standard Room designed for budget-conscious travelers. It features a king-size bed, ceiling fan, complimentary Wi-Fi, and a clean attached bathroom. Perfect for solo travelers and couples seeking comfort at an affordable price.",
+    capacityGuests: 2,
+    capacityBeds: 1,
+    amenities: ["Free Wi-Fi", "King Bed", "Ceiling Fan", "Fresh Linen", "Wardrobe", "Bedside Table", "Large Windows", "Daily Housekeeping", "Attached Bathroom", "Hot & Cold Shower", "Toiletries", "Towels", "Power Outlets", "Drinking Water", "Room Service"],
+    images: ["/uploads/104.png"],
+    featured: false,
+    enabled: true,
+    category: "Standard Room"
+  },
+  {
+    id: "room-103",
+    name: "Standard Room – Room 103",
+    shortDescription: "Simple, clean, and comfortable accommodation for a relaxing stay.",
+    fullDescription: "Room 103 offers a clean and cozy environment with a king-size bed, complimentary Wi-Fi, ceiling fan, and essential amenities. It is an excellent choice for travelers looking for affordable accommodation without compromising comfort.",
+    capacityGuests: 2,
+    capacityBeds: 1,
+    amenities: ["Free Wi-Fi", "King Bed", "Ceiling Fan", "Fresh Linen", "Wardrobe", "Bedside Table", "Large Windows", "Daily Housekeeping", "Attached Bathroom", "Hot & Cold Shower", "Toiletries", "Towels", "Power Outlets", "Drinking Water", "Room Service"],
+    images: ["/uploads/103.png"],
+    featured: false,
+    enabled: true,
+    category: "Standard Room"
+  },
+  {
+    id: "room-102",
+    name: "Standard Room – Room 102",
+    shortDescription: "Comfortable and budget-friendly accommodation for business and leisure travelers.",
+    fullDescription: "Room 102 provides a comfortable king-size bed, complimentary Wi-Fi, ceiling fan, and a clean attached bathroom. Its peaceful atmosphere and essential amenities make it an ideal choice for short or extended stays.",
+    capacityGuests: 2,
+    capacityBeds: 1,
+    amenities: ["Free Wi-Fi", "King Bed", "Ceiling Fan", "Fresh Linen", "Wardrobe", "Bedside Table", "Large Windows", "Daily Housekeeping", "Attached Bathroom", "Hot & Cold Shower", "Toiletries", "Towels", "Power Outlets", "Drinking Water", "Room Service"],
+    images: ["/uploads/102.png"],
+    featured: false,
+    enabled: true,
+    category: "Standard Room"
   }
 ];
 
 export const defaultGallery: GalleryItem[] = [
-  { id: "g1", url: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80", category: "Exterior", caption: "The Historic Facade Illuminated at Dusk" },
-  { id: "g2", url: "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=800&q=80", category: "Interior", caption: "The Grand Reception Lounge & Concierge Desk" },
-  { id: "g3", url: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80", category: "Dining", caption: "Sartorial Restaurant - Michelin Dining Space" },
-  { id: "g4", url: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80", category: "Interior", caption: "Thermal Pools and Indoor Wellness Sanctuary" },
-  { id: "g5", url: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80", category: "Rooms", caption: "Suite 77 Living and Dressing Quarters" },
-  { id: "g6", url: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80", category: "Rooms", caption: "Breathtaking Views from the Penthouse Balcony" }
+  { id: "g-ext-1", url: "/uploads/exterior-1.png", category: "Exterior", caption: "Hotel 77 Front View" },
+  { id: "g-ext-2", url: "/uploads/exterior-2.png", category: "Exterior", caption: "Hotel 77 Entrance & Surroundings" },
+  { id: "g-int-1", url: "/uploads/interior-1.png", category: "Interior", caption: "Reception & Lounge Area" },
+  { id: "g-int-2", url: "/uploads/interior-2.png", category: "Interior", caption: "Interior Hallway" },
+  { id: "g-int-3", url: "/uploads/interior-3.png", category: "Interior", caption: "Common Area" },
+  { id: "g-int-4", url: "/uploads/interior-4.png", category: "Interior", caption: "Hotel Interior Design" },
+  { id: "g-room-110", url: "/uploads/110.png", category: "Rooms", caption: "Suite 110 - Family Suite" },
+  { id: "g-room-107", url: "/uploads/107.png", category: "Rooms", caption: "Suite 107 - Spacious Suite" },
+  { id: "g-room-105", url: "/uploads/105.png", category: "Rooms", caption: "Deluxe Room 105" },
+  { id: "g-room-101", url: "/uploads/101.png", category: "Rooms", caption: "Deluxe Room 101" },
+  { id: "g-room-104", url: "/uploads/104.png", category: "Rooms", caption: "Standard Room 104" },
+  { id: "g-room-103", url: "/uploads/103.png", category: "Rooms", caption: "Standard Room 103" },
+  { id: "g-room-102", url: "/uploads/102.png", category: "Rooms", caption: "Standard Room 102" }
 ];
 
 export const defaultTestimonials: Testimonial[] = [
   {
     id: "t1",
-    authorName: "Alistair Sterling",
+    authorName: "Sita Sharma",
     rating: 5,
-    content: "The level of tailored curation at Hotel 77 is utterly exceptional. From the moment the airport vehicle arrived to the prompt, pre-filled WhatsApp concierge support, it was an incredibly smooth, discrete, and stylish London retreat.",
-    source: "TripAdvisor",
+    content: "Hotel 77 is the best place to stay in Lamahi. Clean rooms, friendly staff, and great food. Highly recommend the family suites!",
+    source: "Google Review",
     featured: true
   },
   {
     id: "t2",
-    authorName: "Marie de Tourvel",
+    authorName: "Rajesh Hamal",
     rating: 5,
-    content: "No online booking stress, no automated cookie-cutter confirmations—just direct, hyper-fast, highly personalized WhatsApp care. The Signature Suite 77 is a masterpiece of modern luxury architecture.",
-    source: "Google Places Premier",
+    content: "Excellent service and very comfortable rooms. The location is perfect for travelers on the East-West Highway. Will definitely come back.",
+    source: "Direct Guest",
     featured: true
   },
   {
     id: "t3",
-    authorName: "Kenzo Takahashi",
-    rating: 5,
-    content: "An immaculate, design-led boutique haven in central London. Extreme privacy combined with warm hospitality. Highly recommended for travelers valuing quiet high-end craftsmanship.",
-    source: "Direct Guest Survey",
+    authorName: "Anita Gurung",
+    rating: 4,
+    content: "We stayed in the Deluxe Room and it was very clean and well-maintained. The staff were very helpful and welcoming. Great value for money.",
+    source: "Booking.com",
     featured: true
   }
 ];
@@ -131,44 +166,46 @@ export const defaultPages: CMSPage[] = [
   {
     id: "about",
     slug: "about",
-    title: "The Legacy of Hotel 77",
-    content: `### A Sanctuary of Rare Craftsmanship
+    title: "The Story of Hotel 77",
+    content: `### Comfort, Hospitality & Convenience in Shreegaun, Jakhera, Lamahi
 
-Nestled comfortably in the historical avenues of Park Lane, Hotel 77 stands as a monument to refined living and absolute privacy. Established originally as an elegant high-society townhouse, the brickwork and cornices preserve a grand heritage, while the interiors have been reconstructed by pioneering designers to tell a tale of boutique modernity.
+Located in the peaceful surroundings of Shreegaun, Jakhera, Lamahi, Dang, Nepal, **Hotel 77** offers a comfortable and welcoming stay for travelers, families, business guests, and visitors exploring western Nepal. Our hotel combines modern amenities with genuine Nepali hospitality, creating a relaxing environment where every guest feels at home.
 
-Our philosophy dismisses the modern automated booking assembly line. We believe true hospitality is a collaborative, human affair. Every reservation begins as a dialogue with our concierge team, crafting bespoke itineraries, coordinating secret entries, or tailoring culinary menus before your arrival.
+Whether you're traveling along the East–West Highway, visiting Lamahi for business, or exploring nearby destinations, Hotel 77 is the perfect place to unwind and recharge.
 
-* **Design Philosophy:** Understated elegance, soft custom ambient tones, sustainable acoustics.
-* **Service Ethos:** 24-hour dedicated attention without intrusive presence.
-* **The Heart of London:** Minutes from Mayfair, Hyde Park, and elite couture.`,
-    lastUpdated: new Date().toISOString()
-  },
-  {
-    id: "terms",
-    slug: "terms",
-    title: "Terms and Direct Accommodation Guidelines",
-    content: `### Respect, Privacy, and Elite Living
+### Our Philosophy
 
-Welcome to Hotel 77. Because we run an exclusive direct contact lodging model, the following guidelines govern reservations and luxury stays:
+We believe that great hospitality begins with genuine care. Our goal is to provide clean, comfortable accommodations, friendly service, and excellent value, ensuring every guest enjoys a memorable stay.
 
-1. **Direct Communication Requirement:** All reservations are orchestrated via direct phone consult or verified WhatsApp message. We hold no automated inventory online to guard the safety of our guests.
-2. **Cancellation and Rescheduling:** Changes to reserved stays must be communicated directly to your assigned concierge at least 72 hours prior to scheduled arrival.
-3. **Privacy and Media:** We maintain a absolute privacy mandate. Photography of other distinguished guests in common luxury spaces like the Sartorial Lounge is strictly prohibited.
-4. **Pet Lodging:** Specialized luxury pet suites are available upon prior notice to curate custom allergen-free environments.`,
-    lastUpdated: new Date().toISOString()
-  },
-  {
-    id: "privacy",
-    slug: "privacy",
-    title: "Privacy & Discretion Protocol",
-    content: `### Your Integrity is Our Paramount Priority
+### Our Commitment
 
-At Hotel 77, your discretion is protected by institutional safeguards. We collect and handle details solely to support personalized communications for direct direct-to-concierge planning:
+* Comfortable and well-maintained rooms
+* Warm and personalized guest service
+* Peaceful and family-friendly atmosphere
+* Affordable rates with quality hospitality
 
-* **No Selling of Guest Data:** We do not broker, trade, or distribute your name, email, or telephone logs.
-* **Temporary Messaging Storage:** Inquiries made through the contact portal are hosted on secure local partitions, visible exclusively to senior management in the LuxuryAdmin panel.
-* **Secure Communications:** Standard WhatsApp communications leverage end-to-end encryption protocols.
-* **CCTV and Security:** Visual recordings of entrances are stored on-site with automatic overwrite cycles to defend secure retreats.`,
+### Accommodations
+
+Hotel 77 features a selection of **Standard Rooms**, **Deluxe Rooms**, and **Family Suites**, thoughtfully designed to suit solo travelers, couples, families, and business guests. Every room includes comfortable bedding, complimentary Wi-Fi, an attached bathroom, daily housekeeping, and essential amenities for a relaxing stay.
+
+### Location
+
+Our convenient location in Shreegaun, Jakhera, Lamahi provides easy access to local markets, restaurants, transportation, and nearby attractions while offering a quiet environment away from the city's hustle and bustle.
+
+### Why Choose Hotel 77?
+
+* Comfortable Standard, Deluxe, and Family Suite accommodations
+* Complimentary High-Speed Wi-Fi
+* Clean and spacious rooms
+* Daily housekeeping
+* Peaceful and secure environment
+* Friendly and professional staff
+* Convenient location in Shreegaun, Jakhera, Lamahi
+* Ample parking for guests
+* Excellent value for business and leisure travelers
+
+**Hotel 77**
+Shreegaun, Jakhera, Lamahi, Dang, Nepal`,
     lastUpdated: new Date().toISOString()
   }
 ];
@@ -176,13 +213,13 @@ At Hotel 77, your discretion is protected by institutional safeguards. We collec
 export const defaultMenu: MenuItem[] = [
   { id: "mn1", label: "Home", path: "/", order: 1 },
   { id: "mn2", label: "Rooms & Suites", path: "/rooms", order: 2 },
-  { id: "mn3", label: "About", path: "/page/about", order: 3 },
-  { id: "mn4", label: "Gallery", path: "/gallery", order: 4 },
+  { id: "mn3", label: "Gallery", path: "/gallery", order: 3 },
+  { id: "mn4", label: "About", path: "/page/about", order: 4 },
   { id: "mn5", label: "Contact", path: "/contact", order: 5 }
 ];
 
 export const defaultAnalytics: AnalyticsData = {
-  pageViews: { "/": 194, "/rooms": 87, "/gallery": 42, "/contact": 35 },
-  conversions: { whatsappClicks: 32, phoneClicks: 18, formSubmissions: 5 },
-  roomViews: { "suite-77": 64, "deluxe-park": 42, "executive-suite": 38, "classic-double": 12 }
+  pageViews: { "/": 50, "/rooms": 20, "/gallery": 10, "/contact": 5 },
+  conversions: { whatsappClicks: 5, phoneClicks: 3, formSubmissions: 1 },
+  roomViews: { "room-110": 10, "room-107": 8, "room-105": 5, "room-101": 4, "room-104": 3, "room-103": 3, "room-102": 2 }
 };

@@ -10,7 +10,8 @@ import {
   ShieldAlert,
   ConciergeBell,
   HeartHandshake,
-  Lock
+  Lock,
+  Star
 } from "lucide-react";
 import { CMSDatabase, Room, GalleryItem, Testimonial, ContactMessage, SiteSettings, CMSPage, MenuItem } from "./types";
 import Header from "./components/Header";
@@ -331,6 +332,52 @@ export default function App() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </section>
+            )}
+
+            {/* Testimonials Section with Google Review CTA */}
+            {testimonials.length > 0 && (
+              <section className="py-16 bg-white" id="homepage-testimonials">
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div className="text-center mb-12">
+                    <span className="text-xs font-mono uppercase text-golden-600 tracking-widest block mb-2 font-semibold">Guest Reflections</span>
+                    <h3 className="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">Distinguished Testimonials</h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {testimonials.map((t) => (
+                      <div key={t.id} className="bg-gray-50 border border-gray-100 rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+                        <div>
+                          <div className="flex items-center gap-1 mb-3">
+                            {Array.from({ length: t.rating }).map((_, i) => (
+                              <Star key={i} className="w-4 h-4 text-golden-500 fill-current" />
+                            ))}
+                          </div>
+                          <p className="text-sm text-gray-700 font-light leading-relaxed italic">"{t.content}"</p>
+                        </div>
+                        <div className="mt-4 pt-3 border-t border-gray-200">
+                          <p className="font-serif font-bold text-gray-900 text-sm">{t.authorName}</p>
+                          {t.source && (
+                            <p className="text-[10px] font-mono text-gray-400 uppercase tracking-widest">{t.source}</p>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Google Review CTA Link */}
+                  {settings.googleReviewUrl && (
+                    <div className="text-center mt-10">
+                      <button
+                        onClick={() => window.open(settings.googleReviewUrl, "_blank")}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border-2 border-golden-600 text-golden-700 hover:bg-golden-600 hover:text-white rounded-xl text-xs font-mono uppercase tracking-wider font-semibold transition-all"
+                      >
+                        <Star className="w-4 h-4" />
+                        Leave a Review on Google
+                      </button>
+                    </div>
+                  )}
                 </div>
               </section>
             )}
