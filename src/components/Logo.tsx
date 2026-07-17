@@ -2,8 +2,12 @@ import React from "react";
 
 interface LogoProps {
   className?: string;
+  logoUrl?: string;
 }
 
-export default function Logo({ className = "w-10 h-10" }: LogoProps) {
-  return <img src="/logo.png" alt="Hotel Logo" className={className} />;
+export default function Logo({ className = "w-10 h-10", logoUrl }: LogoProps) {
+  const src = logoUrl || "/logo.png";
+  return <img src={src} alt="Hotel Logo" className={className}
+    onError={(e) => { (e.target as HTMLImageElement).src = "/logo.png"; }}
+  />;
 }

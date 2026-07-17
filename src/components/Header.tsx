@@ -43,7 +43,7 @@ export default function Header({
             className="flex items-center gap-2 cursor-pointer group"
             id="brand-logo-container"
           >
-            <Logo className="w-10 h-10 rounded-lg object-contain" />
+            <Logo className="w-10 h-10 rounded-lg object-contain" logoUrl={settings.logoUrl} />
             <div>
               <span className="font-serif text-xl font-bold tracking-widest text-navy-900 group-hover:text-navy-800 transition-colors uppercase block">
                 {settings.hotelName || "Hotel 77"}

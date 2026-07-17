@@ -1667,6 +1667,67 @@ function SettingsForm({ initial, onSave }: SettingsFormProps) {
         </div>
       </div>
 
+      {/* Logo upload */}
+      <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5 mb-6">
+        <label className="block text-xs font-mono uppercase text-gray-500 tracking-wider mb-3">Brand Logo</label>
+        <div className="flex items-start gap-4">
+          <div className="w-24 h-24 bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 relative group border">
+            {form.logoUrl ? (
+              <img src={form.logoUrl} alt="Logo Preview" className="w-full h-full object-contain p-1" />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-gray-400 text-[10px] font-mono text-center p-2">No Logo</div>
+            )}
+          </div>
+          <div className="flex-1 space-y-3">
+            <input
+              type="text"
+              value={form.logoUrl}
+              onChange={e => update("logoUrl", e.target.value)}
+              placeholder="https://example.com/logo.png"
+              className="w-full bg-white border border-gray-200 focus:border-golden-600 focus:outline-none rounded-xl px-4 py-2.5 text-xs text-navy-900"
+            />
+            <div className="flex items-center gap-2">
+              <span className="text-xs text-gray-400 font-mono">OR</span>
+              <label className="cursor-pointer bg-white border border-gray-200 hover:bg-gray-50 px-4 py-2 rounded-lg text-xs font-mono font-bold text-gray-700 transition-colors">
+                Upload Logo File
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={async (e) => {
+                    const file = e.target.files?.[0];
+                    if (!file) return;
+                    const token = localStorage.getItem("luxury_admin_token");
+                    const formData = new FormData();
+                    formData.append("file", file);
+                    try {
+                      const res = await fetch("/api/admin/upload", {
+                        method: "POST",
+                        headers: { "Authorization": `Bearer ${token}` },
+                        body: formData
+                      });
+                      if (res.ok) {
+                        const data = await res.json();
+                        update("logoUrl", data.url);
+                      } else {
+                        const reader = new FileReader();
+                        reader.onload = () => update("logoUrl", String(reader.result || ""));
+                        reader.readAsDataURL(file);
+                      }
+                    } catch {
+                      const reader = new FileReader();
+                      reader.onload = () => update("logoUrl", String(reader.result || ""));
+                      reader.readAsDataURL(file);
+                    }
+                    e.target.value = "";
+                  }}
+                  className="hidden"
+                />
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="bg-gray-50 border border-gray-100 rounded-2xl p-5 mb-6">
         <label className="block text-xs font-mono uppercase text-gray-500 tracking-wider mb-3">Homepage Hero Image</label>
         <div className="flex items-start gap-4">
