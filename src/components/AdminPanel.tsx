@@ -67,6 +67,7 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
   const [newGalleryItem, setNewGalleryItem] = React.useState({ url: "", category: "Exterior", caption: "" });
   const [uploadedImage, setUploadedImage] = React.useState("");
   const [uploadError, setUploadError] = React.useState("");
+  const [isUploading, setIsUploading] = React.useState(false);
   const [selectedPageId, setSelectedPageId] = React.useState<string>("about");
   const [formKey, setFormKey] = React.useState(0);
 
@@ -164,8 +165,8 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
   // Rooms creation & update
   const handleSaveRoom = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!editingRoom || !editingRoom.name || !editingRoom.pricePerNight) {
-      showFeedback("Please specify at least room name and price.", "error");
+    if (!editingRoom || !editingRoom.name) {
+      showFeedback("Please specify at least room name.", "error");
       return;
     }
 
@@ -239,7 +240,34 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
     }
   };
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Upload image to server and return the URL
+  const uploadImageToServer = async (file: File): Promise<string | null> => {
+    setIsUploading(true);
+    setUploadError("");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await fetch("/api/admin/upload", {
+        method: "POST",
+        headers: { "Authorization": `Bearer ${token}` },
+        body: formData
+      });
+      if (res.ok) {
+        const data = await res.json();
+        return data.url;
+      } else {
+        setUploadError("Upload to server failed.");
+        return null;
+      }
+    } catch (err) {
+      setUploadError("Network error during upload.");
+      return null;
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
     if (!file.type.startsWith("image/")) {
@@ -248,24 +276,33 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
       e.target.value = "";
       return;
     }
-    if (file.size > 5 * 1024 * 1024) {
-      setUploadError("Image file must be smaller than 5MB.");
+    if (file.size > 10 * 1024 * 1024) {
+      setUploadError("Image file must be smaller than 10MB.");
       setUploadedImage("");
       e.target.value = "";
       return;
     }
-    const reader = new FileReader();
-    reader.onload = () => {
-      const dataUrl = String(reader.result || "");
-      setUploadedImage(dataUrl);
+    // Try server upload first
+    const serverUrl = await uploadImageToServer(file);
+    if (serverUrl) {
+      setUploadedImage(serverUrl);
       setUploadError("");
-      setNewGalleryItem({ ...newGalleryItem, url: dataUrl });
-    };
-    reader.onerror = () => {
-      setUploadError("Could not read image file.");
-      setUploadedImage("");
-    };
-    reader.readAsDataURL(file);
+      setNewGalleryItem({ ...newGalleryItem, url: serverUrl });
+    } else {
+      // Fallback to base64 local preview
+      const reader = new FileReader();
+      reader.onload = () => {
+        const dataUrl = String(reader.result || "");
+        setUploadedImage(dataUrl);
+        setUploadError("Server upload unavailable - using local preview.");
+        setNewGalleryItem({ ...newGalleryItem, url: dataUrl });
+      };
+      reader.onerror = () => {
+        setUploadError("Could not read image file.");
+        setUploadedImage("");
+      };
+      reader.readAsDataURL(file);
+    }
     e.target.value = "";
   };
 
@@ -758,7 +795,6 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
                           </div>
                           <div className="flex items-center gap-3">
                             <span className="text-xs font-mono text-gray-600 bg-gray-50 border px-2 py-0.5 rounded-full">{views} Views</span>
-                            <span className="text-xs font-mono font-bold text-gray-800">£{room.pricePerNight}</span>
                           </div>
                         </div>
                       );
@@ -840,7 +876,6 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
                     name: "New Curated Suite",
                     shortDescription: "",
                     fullDescription: "",
-                    pricePerNight: 500,
                     capacityGuests: 2,
                     capacityBeds: 1,
                     amenities: ["Flat TV Screen", "Minibar", "Rain Shower", "WIFI Access"],
@@ -873,16 +908,6 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
                           required
                           value={editingRoom.name || ""}
                           onChange={(e) => setEditingRoom({ ...editingRoom, name: e.target.value })}
-                          className="w-full bg-gray-50 border border-gray-200 focus:border-golden-600 focus:outline-none rounded-xl px-4 py-3 text-sm text-gray-900"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-mono uppercase text-gray-500 mb-2">Price Per Night (GBP) *</label>
-                        <input
-                          type="number"
-                          required
-                          value={editingRoom.pricePerNight || 0}
-                          onChange={(e) => setEditingRoom({ ...editingRoom, pricePerNight: Number(e.target.value) })}
                           className="w-full bg-gray-50 border border-gray-200 focus:border-golden-600 focus:outline-none rounded-xl px-4 py-3 text-sm text-gray-900"
                         />
                       </div>
@@ -960,6 +985,31 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
                           onChange={(e) => setEditingRoom({ ...editingRoom, images: e.target.value.split(",").map(x => x.trim()).filter(Boolean) })}
                           className="w-full bg-gray-50 border border-gray-200 focus:border-golden-600 focus:outline-none rounded-xl px-4 py-3 text-sm text-gray-900"
                         />
+                        <div className="mt-2 flex items-center gap-3">
+                          <span className="text-[10px] font-mono text-gray-400">OR</span>
+                          <label className="cursor-pointer bg-white border border-gray-200 hover:bg-gray-50 px-4 py-2 rounded-lg text-xs font-mono font-bold text-gray-700 transition-colors">
+                            {isUploading ? "Uploading..." : "Upload Image"}
+                            <input
+                              type="file"
+                              accept="image/*"
+                              onChange={async (e) => {
+                                const file = e.target.files?.[0];
+                                if (!file) return;
+                                const url = await uploadImageToServer(file);
+                                if (url) {
+                                  const currentImages = editingRoom.images || [];
+                                  setEditingRoom({ ...editingRoom, images: [...currentImages, url] });
+                                }
+                                e.target.value = "";
+                              }}
+                              className="hidden"
+                              disabled={isUploading}
+                            />
+                          </label>
+                          {editingRoom.images && editingRoom.images.length > 0 && (
+                            <span className="text-[10px] font-mono text-green-600">{editingRoom.images.length} image(s)</span>
+                          )}
+                        </div>
                       </div>
                     </div>
 
@@ -1013,7 +1063,6 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
                   <thead>
                     <tr className="bg-gray-50 border-b border-gray-100 text-[10px] font-mono uppercase text-gray-400">
                       <th className="p-4 pl-6">Room layout</th>
-                      <th className="p-4">pricing</th>
                       <th className="p-4">segment</th>
                       <th className="p-4">homepage featured?</th>
                       <th className="p-4 pr-6 text-right">actions</th>
@@ -1026,7 +1075,7 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
                           <div className="font-bold text-gray-900">{rm.name} {!rm.enabled && <span className="bg-red-100 text-red-600 text-[9px] px-1 rounded">Hidden</span>}</div>
                           <p className="text-xs text-gray-500 font-light max-w-sm truncate mt-1">{rm.shortDescription}</p>
                         </td>
-                        <td className="p-4 font-mono font-medium text-gray-800">£{rm.pricePerNight} / Night</td>
+                        <td className="p-4 font-mono font-medium text-gray-800">Bespoke Rate</td>
                         <td className="p-4 text-xs font-mono uppercase text-gray-500">{rm.category}</td>
                         <td className="p-4">
                           <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full ${rm.featured ? "bg-golden-100 text-golden-900" : "bg-gray-100 text-gray-400"}`}>{rm.featured ? "Featured" : "Regular"}</span>
@@ -1079,14 +1128,17 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-mono uppercase text-gray-500 mb-1.5">Upload Image File (max 5MB)</label>
+                  <label className="block text-[10px] font-mono uppercase text-gray-500 mb-1.5">Upload Image File (max 10MB)</label>
                   <input
                     type="file"
                     accept="image/*"
                     onChange={handleImageUpload}
-                    className="w-full bg-white border border-gray-200 focus:border-golden-600 focus:outline-none rounded-xl px-3 py-2.5 text-xs text-navy-900 file:mr-2 file:py-1 file:px-3 file:rounded-xl file:border-0 file:text-[10px] file:font-mono file:uppercase file:bg-golden-600 file:text-white"
+                    disabled={isUploading}
+                    className="w-full bg-white border border-gray-200 focus:border-golden-600 focus:outline-none rounded-xl px-3 py-2.5 text-xs text-navy-900 file:mr-2 file:py-1 file:px-3 file:rounded-xl file:border-0 file:text-[10px] file:font-mono file:uppercase file:bg-golden-600 file:text-white file:cursor-pointer"
                   />
+                  {isUploading && <p className="text-[10px] text-blue-500 mt-1 font-mono">Uploading image to server...</p>}
                   {uploadError && <p className="text-[10px] text-red-500 mt-1 font-mono">{uploadError}</p>}
+                  {uploadedImage && <p className="text-[10px] text-green-600 mt-1 font-mono">✓ Image ready</p>}
                 </div>
                 <div>
                   <label className="block text-[10px] font-mono uppercase text-gray-500 mb-1.5">Category</label>

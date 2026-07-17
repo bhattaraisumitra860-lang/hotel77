@@ -6,7 +6,15 @@
     <title>Hotel 77 | Luxury Boutique Hotel</title>  </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script type="module" src="./src/main.tsx"></script>
+    <!-- SPA redirect script for Vercel -->
+    <script>
+      // Redirect any server-rendered 404 fallback to index.html for SPA routing
+      (function() {
+        var isVercel404 = document.documentElement.innerHTML.includes('404') ||
+                          window.location.pathname !== '/' && !document.querySelector('#root')?.children.length;
+      })();
+    </script>
   </body>
 </html>
 

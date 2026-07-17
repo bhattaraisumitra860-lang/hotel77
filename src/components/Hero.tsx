@@ -25,6 +25,8 @@ export default function Hero({ settings, onChangePath, onTrackClick }: HeroProps
           alt="Hotel 77 Palazzo Exterior"
           className="w-full h-full object-cover object-center opacity-40 scale-105 animate-[pulse_8s_infinite] transition-transform duration-[4000ms]"
           referrerPolicy="no-referrer"
+          loading="eager"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-navy-900/60" />
       </div>

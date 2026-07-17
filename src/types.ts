@@ -27,7 +27,6 @@ export interface Room {
   name: string;
   shortDescription: string;
   fullDescription: string;
-  pricePerNight: number;
   capacityGuests: number;
   capacityBeds: number;
   amenities: string[];

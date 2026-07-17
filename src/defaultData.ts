@@ -13,7 +13,7 @@ export const defaultSettings: SiteSettings = {
   emailAddress: "concierge@hotel77.com",
   address: "77 Park Lane, London, W1K 1QA, United Kingdom",
   googleMapsEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d2483.1895648834947!2d-0.1558231!3d51.509355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487605330e2f8955%3A0xe5eb6c7ebd286d99!2sPark%20Ln%2C%20London!5e0!3m2!1sen!2suk!4v1689000000000!5m2!1sen!2suk",
-  heroImageUrl: "https://images.unsplash.com/photo-1542314831-c6a420828f41?auto=format&fit=crop&w=2000&q=80",
+  heroImageUrl: "https://images.unsplash.com/photo-1542314831-c6a420828f41?auto=format&fit=crop&w=800&q=80",
   instagramUrl: "https://instagram.com/hotel77",
   facebookUrl: "https://facebook.com/hotel77",
   twitterUrl: "https://twitter.com/hotel77",
@@ -30,13 +30,12 @@ export const defaultRooms: Room[] = [
     name: "The Signature Suite 77",
     shortDescription: "Our flagship double-level apartment featuring breathtaking views and bespoke mid-century design.",
     fullDescription: "Designed for the ultimate connoisseur, The Signature Suite 77 combines high-ceilinged Edwardian architecture with minimalist German engineering. Enjoy a private marble fireplace, floor-to-ceiling soundproof acoustic windows, and a state-of-the-art master bedroom. Includes round-the-clock personal butler service, complimentary airport limousine transfer, and private cocktail cupboard setup.",
-    pricePerNight: 1250,
     capacityGuests: 4,
     capacityBeds: 2,
     amenities: ["24/7 Butler Support", "Private Bar & Lounge", "Carrara Marble Fireplace", "Limousine Services", "Soundproof Acoustic Windows", "Dyson Supersonic Dryer", "Frette Linens", "Bang & Olufsen Audio"],
     images: [
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80"
+      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"
     ],
     featured: true,
     enabled: true,
@@ -47,13 +46,12 @@ export const defaultRooms: Room[] = [
     name: "Deluxe Park King Room",
     shortDescription: "Elegant spatial beauty overlooking beautiful greenery with private workspace and rain shower.",
     fullDescription: "Perfect for corporate leadership or executive travelers, the Deluxe Park Room offers a stunning vista of Westminster and the Royal Parks. Features an curated selection of modern photography, an ergonomic solid walnut writing desk, automatic circadian dimming lighting, and a rainfall sensory wet-room clad in graphite slate.",
-    pricePerNight: 650,
     capacityGuests: 2,
     capacityBeds: 1,
     amenities: ["Sensory Rain Shower", "Pre-stocked Wine Cooler", "Walnut Executive Desk", "Nespresso Expert Machine", "Circadian Smart Lighting", "Plush Kimonos & Slippers"],
     images: [
-      "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80"
+      "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80"
     ],
     featured: true,
     enabled: true,
@@ -64,13 +62,12 @@ export const defaultRooms: Room[] = [
     name: "Executive Penthouse Suite",
     shortDescription: "Plush elevated living spanning the top floor with wrap-around private terrace balcony.",
     fullDescription: "Occupying the entire western crest of our top floor, the Penthouse Suite is defined by its architectural layout and panoramic wrap-around terrace. An open-concept living area splits into a curated private library, entertainment parlor, and a grand master bedroom detailed with solid brass trim and hand-tufted carpets.",
-    pricePerNight: 1850,
     capacityGuests: 2,
     capacityBeds: 1,
     amenities: ["Private Wrap-around Balcony", "Walk-in Dressing Parlor", "Bespoke Whiskey Cabinet", "Deep Soaking Freestanding Tub", "Smart Heated Toilets", "Private Lift Entrance"],
     images: [
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80",
-      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80"
+      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80"
     ],
     featured: true,
     enabled: true,
@@ -81,12 +78,11 @@ export const defaultRooms: Room[] = [
     name: "Atelier Double Room",
     shortDescription: "Cozy metropolitan sanctuary celebrating British heritage with elegant bespoke textures.",
     fullDescription: "Our entry room celebrates curated micro-living. Features customized wool fabrics, curated travel literature collections, a sleek smart TV screen, and a beautiful walk-in tiled shower suite. Perfect for solo explorers or couples demanding high-quality standards in a compact city sanctuary.",
-    pricePerNight: 390,
     capacityGuests: 2,
     capacityBeds: 1,
     amenities: ["Heritage Wool Linens", "Smart Apple TV Setup", "Heated Towel Racks", "Organic Botanical Toiletries", "Bespoke Minibar Selection"],
     images: [
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1200&q=80"
+      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=800&q=80"
     ],
     featured: false,
     enabled: true,
@@ -95,12 +91,12 @@ export const defaultRooms: Room[] = [
 ];
 
 export const defaultGallery: GalleryItem[] = [
-  { id: "g1", url: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=80", category: "Exterior", caption: "The Historic Facade Illuminated at Dusk" },
-  { id: "g2", url: "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=80", category: "Interior", caption: "The Grand Reception Lounge & Concierge Desk" },
-  { id: "g3", url: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80", category: "Dining", caption: "Sartorial Restaurant - Michelin Dining Space" },
-  { id: "g4", url: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80", category: "Interior", caption: "Thermal Pools and Indoor Wellness Sanctuary" },
-  { id: "g5", url: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80", category: "Rooms", caption: "Suite 77 Living and Dressing Quarters" },
-  { id: "g6", url: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1200&q=80", category: "Rooms", caption: "Breathtaking Views from the Penthouse Balcony" }
+  { id: "g1", url: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=800&q=80", category: "Exterior", caption: "The Historic Facade Illuminated at Dusk" },
+  { id: "g2", url: "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=800&q=80", category: "Interior", caption: "The Grand Reception Lounge & Concierge Desk" },
+  { id: "g3", url: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80", category: "Dining", caption: "Sartorial Restaurant - Michelin Dining Space" },
+  { id: "g4", url: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=800&q=80", category: "Interior", caption: "Thermal Pools and Indoor Wellness Sanctuary" },
+  { id: "g5", url: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80", category: "Rooms", caption: "Suite 77 Living and Dressing Quarters" },
+  { id: "g6", url: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80", category: "Rooms", caption: "Breathtaking Views from the Penthouse Balcony" }
 ];
 
 export const defaultTestimonials: Testimonial[] = [

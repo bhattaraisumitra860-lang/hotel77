@@ -38,7 +38,6 @@ export default function RoomsSection({
 
   // Search, categories and filter state
   const [selectedCategory, setSelectedCategory] = React.useState<string>("All");
-  const [maxPrice, setMaxPrice] = React.useState<number>(2000);
   const [guestsCount, setGuestsCount] = React.useState<number>(0); // 0 means any
   const [searchQuery, setSearchQuery] = React.useState<string>("");
 
@@ -48,34 +47,20 @@ export default function RoomsSection({
     return ["All", ...Array.from(list)];
   }, [rooms]);
 
-  // Compute maximum pricing threshold
-  const absoluteMaxPrice = React.useMemo(() => {
-    if (rooms.length === 0) return 2000;
-    return Math.max(...rooms.map(r => r.pricePerNight));
-  }, [rooms]);
-
-  // Initialize maxPrice accurately on mount
-  React.useEffect(() => {
-    if (absoluteMaxPrice > 0) {
-      setMaxPrice(absoluteMaxPrice);
-    }
-  }, [absoluteMaxPrice]);
-
   // Filtering Rooms
   const filteredRooms = React.useMemo(() => {
     return rooms.filter(room => {
       if (filterFeaturedOnly && !room.featured) return false;
-      
+
       const matchCategory = selectedCategory === "All" || room.category === selectedCategory;
-      const matchPrice = room.pricePerNight <= maxPrice;
       const matchGuests = guestsCount === 0 || room.capacityGuests >= guestsCount;
-      const matchSearch = room.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      const matchSearch = room.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           room.shortDescription.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           room.amenities.some(a => a.toLowerCase().includes(searchQuery.toLowerCase()));
 
-      return matchCategory && matchPrice && matchGuests && matchSearch;
+      return matchCategory && matchGuests && matchSearch;
     });
-  }, [rooms, filterFeaturedOnly, selectedCategory, maxPrice, guestsCount, searchQuery]);
+  }, [rooms, filterFeaturedOnly, selectedCategory, guestsCount, searchQuery]);
 
   const handleOpenRoomDetails = (room: Room) => {
     setSelectedRoom(room);
@@ -116,7 +101,7 @@ export default function RoomsSection({
             {filterFeaturedOnly ? "The Featured Suites & Penthouses" : "Our Private Curated Rooms"}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-gray-700 font-light leading-relaxed">
-            Every chamber is balanced with architectural grandeur, pre-stocked custom whiskey cellars, and discrete WhatsApp butler coordinates. Select and initiate a direct consult to confirm bespoke rates.
+            Every chamber is balanced with architectural grandeur, pre-stocked custom whiskey cellars, and discrete WhatsApp butler coordinates. Select and initiate a direct consult to confirm availability.
           </p>
         </div>
 
@@ -128,7 +113,7 @@ export default function RoomsSection({
             <Compass className="w-12 h-12 text-gray-300 mx-auto mb-4" />
             <h4 className="font-serif text-xl font-semibold text-gray-900">No matching suites found</h4>
             <p className="mt-2 text-sm text-gray-500 max-w-md mx-auto">
-              Please adjust your price ceiling or criteria to view other exclusive Park Lane lodgings.
+              Please adjust your search criteria to view other exclusive Park Lane lodgings.
             </p>
           </div>
         ) : (
@@ -147,6 +132,8 @@ export default function RoomsSection({
                     alt={room.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[4s]"
                     referrerPolicy="no-referrer"
+                    loading="lazy"
+                    decoding="async"
                   />
                   
                   {/* Category Pill Tag */}
@@ -246,6 +233,8 @@ export default function RoomsSection({
                   alt={`${selectedRoom.name} view`}
                   className="w-full h-full object-cover transition-all duration-300"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                 />
 
                 {/* Left / Right chevron helpers for multi-images */}

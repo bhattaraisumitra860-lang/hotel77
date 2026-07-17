@@ -325,7 +325,7 @@ export default function App() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
                   {gallery.slice(0, 6).map((img) => (
                     <div key={img.id} className="relative aspect-square overflow-hidden rounded-xl border bg-gray-50 group cursor-pointer" onClick={() => handleNavigate("/gallery")}>
-                      <img src={img.url} alt="look preview" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[4s]" referrerPolicy="no-referrer" />
+                      <img src={img.url} alt="look preview" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[4s]" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
                       <div className="absolute inset-0 bg-navy-950/20 group-hover:bg-navy-950/50 transition-colors flex items-center justify-center">
                         <span className="text-[10px] font-mono text-white opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest font-semibold">View Gallery</span>
                       </div>
@@ -370,7 +370,7 @@ export default function App() {
             <section className="max-w-5xl mx-auto px-4 py-8 mb-10" id="homepage-cta-banner">
               <div className="bg-navy-950 text-white rounded-3xl p-8 sm:p-12 text-center space-y-6 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
-                  <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=80" alt="lobby background" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                  <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=80" alt="lobby background" className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" />
                 </div>
                 <div className="relative z-10 space-y-4">
                   <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight italic">Coordinate Your Park Lane Escape</h3>
@@ -510,7 +510,7 @@ export default function App() {
             <h5 className="text-xs font-mono uppercase tracking-widest text-golden-500 font-semibold">Navigation</h5>
             <ul className="space-y-2 text-xs font-mono text-gray-400">
               <li><button onClick={() => handleNavigate("/")} className="hover:text-white transition-colors">Return Home</button></li>
-              <li><button onClick={() => handleNavigate("/rooms")} className="hover:text-white transition-colors">Chamber Specs &amp; Rates</button></li>
+              <li><button onClick={() => handleNavigate("/rooms")} className="hover:text-white transition-colors">Chamber Specs &amp; Details</button></li>
               <li><button onClick={() => handleNavigate("/gallery")} className="hover:text-white transition-colors">Grandeur Portfolio</button></li>
               <li><button onClick={() => handleNavigate("/contact")} className="hover:text-white transition-colors">Contact Us</button></li>
             </ul>
