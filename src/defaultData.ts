@@ -21,7 +21,8 @@ export const defaultSettings: SiteSettings = {
   seoDescription: "Experience unparalleled contemporary luxury at Hotel 77, located in the prestigious heart of London. Impeccable bespoke services and timeless suites await.",
   seoKeywords: "luxury hotel london, boutique hotel west end, park lane suites, hotel 77, exclusive accommodation",
   footerContent: "© 2026 Hotel 77 Operations Ltd. Crafted for direct booking excellence.",
-  maintenanceMode: false
+  maintenanceMode: false,
+  googleReviewUrl: ""
 };
 
 export const defaultRooms: Room[] = [

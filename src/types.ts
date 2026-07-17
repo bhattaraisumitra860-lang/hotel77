@@ -20,6 +20,7 @@ export interface SiteSettings {
   seoKeywords: string;
   footerContent: string;
   maintenanceMode: boolean;
+  googleReviewUrl?: string;
 }
 
 export interface Room {

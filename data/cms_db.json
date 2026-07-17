@@ -20,6 +20,7 @@
     "seoKeywords": "luxury hotel london, boutique hotel west end, park lane suites, hotel 77, exclusive accommodation",
     "footerContent": "© 2026 Hotel 77 Operations Ltd. Crafted for direct booking excellence.",
     "maintenanceMode": false,
+    "googleReviewUrl": "https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID_HERE",
     "mapLatitude": 27.86291620484256,
     "mapLongitude": 82.5682934365113,
     "heroImageUrl": "/uploads/upload-1781347558712.jpg"
@@ -270,7 +271,7 @@
       "/rooms": 2132,
       "/gallery": 49,
       "/contact": 49,
-      "/admin": 44,
+      "/admin": 45,
       "/page/about": 7
     },
     "conversions": {
@@ -287,7 +288,45 @@
   },
   "adminPasswordHash": "$2b$10$et5sPmf/6F907QEk5LVrL.a.wJ3KKZcftZG9fAYhrzBpxC2bWDkAq",
   "activeSessions": [
-    "tok-xlpwyrefia93i5nkuxoqrt",
-    "tok-b695hnw19lblkr1b58qcdk"
+    {
+      "token": "tok-xlpwyrefia93i5nkuxoqrt",
+      "createdAt": 1784309442181
+    },
+    {
+      "token": "tok-b695hnw19lblkr1b58qcdk",
+      "createdAt": 1784309442181
+    },
+    {
+      "token": "tok-d4c00f6bdaac421b55698ded133722ac80ed7e782fe3e68d182c08e2690148d1",
+      "createdAt": 1784309442256
+    },
+    {
+      "token": "tok-814621207f31601f2cd679888d37599a08a46a3b5b47d4bc4a60ec8f46903d66",
+      "createdAt": 1784309716494
+    },
+    {
+      "token": "tok-01033129d40329690f2c5781f7599c5566fb5a36479b72dffc1c360c1ed32c1d",
+      "createdAt": 1784315262027
+    },
+    {
+      "token": "tok-ab4a797540106552a282235126f9c8385a68291d423fe53c3f38277771f68a53",
+      "createdAt": 1784315275646
+    },
+    {
+      "token": "tok-da8996dccdfee3f3e3e7b2dc94abd245e5c6596a1dd3665309e91f02cacd8ece",
+      "createdAt": 1784315384919
+    },
+    {
+      "token": "tok-e413d069d40774c3d6bfe6838f86db63b6725ec8f266d5cb6c958a7dbdd09602",
+      "createdAt": 1784315403191
+    },
+    {
+      "token": "tok-697defdd8d5c1f2e76ccf64cc522aa0e1ad6c8829495ce88de23942bf92d1f4e",
+      "createdAt": 1784315445623
+    },
+    {
+      "token": "tok-c3c64394b957aeb0e1fc45a11a2e0b16ef83fce0aeb451a18d1cba44ff5bc64e",
+      "createdAt": 1784315470393
+    }
   ]
 }

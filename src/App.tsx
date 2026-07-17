@@ -394,6 +394,14 @@ export default function App() {
                     >
                       Custom Inquiry Form
                     </button>
+                    {settings.googleReviewUrl && (
+                      <button
+                        onClick={() => window.open(settings.googleReviewUrl, "_blank")}
+                        className="w-full sm:w-auto px-6 py-3.5 bg-golden-600 hover:bg-golden-700 text-white rounded-xl text-xs font-mono uppercase tracking-wider font-semibold transition-colors"
+                      >
+                        ★ Leave a Google Review
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
@@ -537,9 +545,17 @@ export default function App() {
           <p className="text-[10px] font-mono text-gray-500 uppercase tracking-wider">
             {settings.footerContent || "© 2026 Hotel 77 Operations. All Rights Reserved."}
           </p>
-          <div className="flex gap-4 text-[10px] font-mono text-gray-500">
+          <div className="flex gap-4 text-[10px] font-mono text-gray-500 items-center">
             <span className="flex items-center gap-1"><ConciergeBell className="w-3.5 h-3.5" /> Direct Support</span>
             <span className="flex items-center gap-1"><HeartHandshake className="w-3.5 h-3.5" /> High Discretion</span>
+            {settings.googleReviewUrl && (
+              <button
+                onClick={() => window.open(settings.googleReviewUrl, "_blank")}
+                className="flex items-center gap-1 text-golden-400 hover:text-golden-300 transition-colors"
+              >
+                ★ Review Us
+              </button>
+            )}
           </div>
         </div>
 

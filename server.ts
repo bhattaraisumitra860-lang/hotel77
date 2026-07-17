@@ -31,7 +31,18 @@ const storage = multer.diskStorage({
     cb(null, "upload-" + Date.now() + ext);
   }
 });
-const upload = multer({ storage });
+const upload = multer({
+  storage,
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB max
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/webp", "image/svg+xml", "image/avif"];
+    if (allowedTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error(`Invalid file type: ${file.mimetype}. Allowed: JPG, PNG, GIF, WebP, SVG, AVIF`));
+    }
+  }
+});
 
 // Initial default state is prepared beautifully with high-quality luxury records
 const defaultSettings: SiteSettings = {
@@ -55,7 +66,8 @@ const defaultSettings: SiteSettings = {
   seoDescription: "Experience unparalleled contemporary luxury at Hotel 77, located in the prestigious heart of London. Impeccable bespoke services and timeless suites await.",
   seoKeywords: "luxury hotel london, boutique hotel west end, park lane suites, hotel 77, exclusive accommodation",
   footerContent: "© 2026 Hotel 77 Operations Ltd. Crafted for direct booking excellence.",
-  maintenanceMode: false
+  maintenanceMode: false,
+  googleReviewUrl: ""
 };
 
 const defaultRooms: Room[] = [
@@ -422,13 +434,23 @@ async function startServer() {
   // --- ADMIN ENDPOINTS ---
 
   // Upload endpoint
-  app.post("/api/admin/upload", requireAuth, upload.single("file"), (req, res) => {
-    if (!req.file) {
-      res.status(400).json({ error: "No file uploaded." });
-      return;
-    }
-    const fileUrl = `/uploads/${req.file.filename}`;
-    res.json({ success: true, url: fileUrl });
+  app.post("/api/admin/upload", requireAuth, (req, res, next) => {
+    upload.single("file")(req, res, (err) => {
+      if (err) {
+        if (err instanceof multer.MulterError) {
+          if (err.code === "LIMIT_FILE_SIZE") {
+            return res.status(400).json({ error: "File too large. Maximum size is 10MB." });
+          }
+          return res.status(400).json({ error: `Upload error: ${err.message}` });
+        }
+        return res.status(400).json({ error: err.message || "Upload rejected." });
+      }
+      if (!req.file) {
+        return res.status(400).json({ error: "No file uploaded. Please select an image." });
+      }
+      const fileUrl = `/uploads/${req.file.filename}`;
+      res.json({ success: true, url: fileUrl });
+    });
   });
 
   // Login

@@ -214,8 +214,12 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
   // Gallery bulk and single inserts
   const handleAddGalleryItem = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isUploading) {
+      showFeedback("Please wait for the image upload to finish.", "error");
+      return;
+    }
     if (!newGalleryItem.url) {
-      showFeedback("A valid visual asset URL is required.", "error");
+      showFeedback("Please enter a URL or upload an image first.", "error");
       return;
     }
     try {
@@ -230,6 +234,7 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
       if (res.ok) {
         showFeedback("Visual asset committed.");
         setNewGalleryItem({ url: "", category: "Exterior", caption: "" });
+        setUploadedImage("");
         fetchAdminData();
         triggerRefresh();
       } else {
@@ -256,7 +261,8 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
         const data = await res.json();
         return data.url;
       } else {
-        setUploadError("Upload to server failed.");
+        const errData = await res.json().catch(() => ({ error: "Upload failed." }));
+        setUploadError(errData.error || "Upload to server failed.");
         return null;
       }
     } catch (err) {
@@ -271,7 +277,7 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
     const file = e.target.files?.[0];
     if (!file) return;
     if (!file.type.startsWith("image/")) {
-      setUploadError("Only image files are allowed.");
+      setUploadError("Only image files are allowed (JPG, PNG, GIF, WebP).");
       setUploadedImage("");
       e.target.value = "";
       return;
@@ -283,18 +289,23 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
       return;
     }
     // Try server upload first
+    setUploadError("");
     const serverUrl = await uploadImageToServer(file);
     if (serverUrl) {
       setUploadedImage(serverUrl);
-      setUploadError("");
       setNewGalleryItem({ ...newGalleryItem, url: serverUrl });
     } else {
-      // Fallback to base64 local preview
+      // Server upload failed — fallback to base64 for small images only
+      if (file.size > 500 * 1024) {
+        setUploadError("Upload to server failed and image is too large for base64 fallback (>500KB). Try a smaller image or check the server.");
+        setUploadedImage("");
+        e.target.value = "";
+        return;
+      }
       const reader = new FileReader();
       reader.onload = () => {
         const dataUrl = String(reader.result || "");
         setUploadedImage(dataUrl);
-        setUploadError("Server upload unavailable - using local preview.");
         setNewGalleryItem({ ...newGalleryItem, url: dataUrl });
       };
       reader.onerror = () => {
@@ -1613,6 +1624,7 @@ function SettingsForm({ initial, onSave }: SettingsFormProps) {
     seoKeywords: initial?.seoKeywords || "",
     footerContent: initial?.footerContent || "",
     maintenanceMode: initial?.maintenanceMode || false,
+    googleReviewUrl: initial?.googleReviewUrl || "",
     heroImageUrl: initial?.heroImageUrl || "https://images.unsplash.com/photo-1542314831-c6a420828f41?auto=format&fit=crop&w=2000&q=80"
   });
   const [saving, setSaving] = useState(false);
@@ -1811,8 +1823,23 @@ function SettingsForm({ initial, onSave }: SettingsFormProps) {
           <input type="text" value={form.footerContent} onChange={e => update("footerContent", e.target.value)} className="w-full bg-gray-50 border border-gray-200 focus:border-golden-600 focus:outline-none rounded-xl px-4 py-3 text-sm text-gray-900" />
         </div>
         <div>
+          <label className="block text-xs font-mono uppercase text-gray-500 tracking-wider mb-2">Google Review Link</label>
+          <input type="text" value={form.googleReviewUrl} onChange={e => update("googleReviewUrl", e.target.value)} placeholder="https://search.google.com/local/writereview?placeid=..." className="w-full bg-gray-50 border border-gray-200 focus:border-golden-600 focus:outline-none rounded-xl px-4 py-3 text-sm text-gray-900" />
+        </div>
+        <div>
           <label className="block text-xs font-mono uppercase text-gray-500 tracking-wider mb-2">Instagram URL</label>
           <input type="text" value={form.instagramUrl} onChange={e => update("instagramUrl", e.target.value)} className="w-full bg-gray-50 border border-gray-200 focus:border-golden-600 focus:outline-none rounded-xl px-4 py-3 text-sm text-gray-900" />
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-gray-100">
+        <div>
+          <label className="block text-xs font-mono uppercase text-gray-500 tracking-wider mb-2">Twitter / X URL</label>
+          <input type="text" value={form.twitterUrl} onChange={e => update("twitterUrl", e.target.value)} className="w-full bg-gray-50 border border-gray-200 focus:border-golden-600 focus:outline-none rounded-xl px-4 py-3 text-sm text-gray-900" />
+        </div>
+        <div>
+          <label className="block text-xs font-mono uppercase text-gray-500 tracking-wider mb-2">Facebook URL</label>
+          <input type="text" value={form.facebookUrl} onChange={e => update("facebookUrl", e.target.value)} className="w-full bg-gray-50 border border-gray-200 focus:border-golden-600 focus:outline-none rounded-xl px-4 py-3 text-sm text-gray-900" />
         </div>
         <div>
           <label className="block text-xs font-mono uppercase text-gray-500 tracking-wider mb-2">Maintenance Mode</label>
