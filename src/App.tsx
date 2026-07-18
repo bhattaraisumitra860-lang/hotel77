@@ -227,7 +227,7 @@ export default function App() {
 
   // AMENITIES DATA MODEL
   const amenitiesList = [
-    { icon: <Clock className="w-6 h-6 text-golden-600" />, title: "24/7 Personal Room Service Curation", desc: "Private concierge assigned to coordinate custom meals, laundry, entries, and travel." },
+    { icon: <Clock className="w-6 h-6 text-golden-600" />, title: "24/7 Room Service", desc: "Private concierge assigned to coordinate custom meals, laundry, entries, and travel." },
     { icon: <Wifi className="w-6 h-6 text-golden-600" />, title: "Good WiFi", desc: "High-speed wireless internet access throughout the property." },
     { icon: <Wine className="w-6 h-6 text-golden-600" />, title: "Peaceful Environment", desc: "Tranquil and relaxing atmosphere for a comfortable stay." },
     { icon: <Utensils className="w-6 h-6 text-golden-600" />, title: "Good Food", desc: "Enjoy private in-room seasonal degustation or table buyouts coordinated anytime." },

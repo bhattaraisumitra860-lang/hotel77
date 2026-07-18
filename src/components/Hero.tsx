@@ -39,7 +39,7 @@ export default function Hero({ settings, onChangePath, onTrackClick }: HeroProps
           id="hero-badge"
         >
           <Hotel className="w-3.5 h-3.5" />
-          ESTABLISHED LONDON W1
+          ESTABLISHED
         </div>
 
         {/* Brand headline */}
