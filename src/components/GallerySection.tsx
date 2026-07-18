@@ -98,6 +98,7 @@ export default function GallerySection({ galleryItems }: GallerySectionProps) {
                   className="w-full object-cover rounded-2xl transition-transform duration-[6s] group-hover:scale-105"
                   loading="lazy"
                   referrerPolicy="no-referrer"
+                  onError={(e) => { (e.target as HTMLImageElement).src = "/uploads/logo.png"; }}
                 />
 
                 {/* Dark overlay showing caption & magnifier */}
@@ -144,6 +145,7 @@ export default function GallerySection({ galleryItems }: GallerySectionProps) {
               alt={filteredItems[lightboxIndex].caption || "Hotel 77 preview"}
               className="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl"
               referrerPolicy="no-referrer"
+              onError={(e) => { (e.target as HTMLImageElement).src = "/uploads/logo.png"; }}
             />
 
             {/* Left Chevron */}

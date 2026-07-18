@@ -3,7 +3,6 @@
   "outputDirectory": "dist",
   "rewrites": [
     { "source": "/uploads/(.*)", "destination": "/uploads/$1" },
-    { "source": "/api/(.*)", "destination": "/server.cjs" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }

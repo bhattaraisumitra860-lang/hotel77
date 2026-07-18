@@ -56,7 +56,7 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
       if (res.ok) {
         setStatus({
           type: "success",
-          message: "Your discrete custom request has been successfully routed to our senior concierge team. We will follow up shortly.",
+          message: "Thank you! Your message has been received. We will get back to you shortly.",
         });
         setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
@@ -91,13 +91,13 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
         {/* Header summary */}
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs font-mono uppercase text-golden-600 tracking-widest block mb-3 font-semibold">
-            Bespoke Contact Coordination
+            Get in Touch
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-tight">
-            Initiate Contact
+            Contact Us
           </h2>
           <p className="mt-4 text-sm sm:text-base text-gray-500 font-light leading-relaxed">
-            Whether organizing discrete airport limousine pickups, setting dining plans, or specifying allergy requirements, our operations room is standing by.
+            Whether you need to make a reservation, have a question, or require assistance, our team is here to help.
           </p>
         </div>
 
@@ -110,7 +110,7 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
             <div className="bg-white rounded-3xl border border-gray-100 p-6 sm:p-8 shadow-sm space-y-6">
               
               <h3 className="font-serif text-xl font-bold text-gray-900 border-b border-gray-100 pb-4">
-                The Concierge Office
+                Contact Information
               </h3>
 
               {/* Phone Line 1 */}
@@ -119,7 +119,7 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-gray-400 tracking-wider">Primary Telephone Line</span>
+                  <span className="text-[10px] font-mono uppercase text-gray-400 tracking-wider">Phone</span>
                   <p 
                     onClick={handlePhoneClick}
                     className="text-base text-gray-900 hover:text-golden-700 transition-colors font-mono cursor-pointer mt-1 font-medium"
@@ -156,7 +156,7 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
                   <MessageSquare className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono uppercase text-gray-400 tracking-wider">Secure Encrypted WhatsApp Curation</span>
+                  <span className="text-[10px] font-mono uppercase text-gray-400 tracking-wider">WhatsApp</span>
                   <p 
                     onClick={handleWhatsappClick}
                     className="text-base text-blue-600 hover:text-blue-700 transition-colors cursor-pointer mt-1 font-mono font-medium"
@@ -196,9 +196,9 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
 
             {/* Micro FAQ helper bullet card */}
             <div className="bg-golden-50/50 border border-golden-100/60 rounded-2xl p-5">
-              <h5 className="text-[10px] font-mono uppercase tracking-wider text-golden-900 block mb-2 font-semibold">Immediate Dispatch Policy</h5>
+              <h5 className="text-[10px] font-mono uppercase tracking-wider text-golden-900 block mb-2 font-semibold">Quick Response</h5>
               <p className="text-xs text-gray-600 leading-relaxed font-light">
-                Our front desks maintain constant attendance details. Messages submitted via this secure gateway are printed directly at the concierge lounge, receiving a high priority.
+                We aim to respond to all inquiries promptly. For immediate assistance, please call or message us on WhatsApp.
               </p>
             </div>
 
@@ -245,7 +245,7 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
                       type="text"
                       name="name"
                       required
-                      placeholder="e.g. Sir Edward Cole"
+                      placeholder="Your full name"
                       value={formData.name}
                       onChange={handleInputChange}
                       disabled={status.type === "submitting"}
@@ -261,7 +261,7 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
                       type="email"
                       name="email"
                       required
-                      placeholder="e.g. edward@coleventures.com"
+                      placeholder="e.g. your@email.com"
                       value={formData.email}
                       onChange={handleInputChange}
                       disabled={status.type === "submitting"}
@@ -277,7 +277,7 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
                   <input
                     type="tel"
                     name="phone"
-                    placeholder="e.g. +44 7111 222333"
+                    placeholder="e.g. +977 98XXXXXXXX"
                     value={formData.phone}
                     onChange={handleInputChange}
                     disabled={status.type === "submitting"}
@@ -293,7 +293,7 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
                     name="message"
                     required
                     rows={4}
-                    placeholder="Please let us know your preferred suite, dates of interest, catering requirements, or ground transport wishes..."
+                    placeholder="Please let us know your booking requirements, dates, or any questions..."
                     value={formData.message}
                     onChange={handleInputChange}
                     disabled={status.type === "submitting"}
@@ -307,11 +307,11 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
                   className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3.5 bg-navy-950 hover:bg-navy-900 text-white rounded-xl text-xs font-mono uppercase tracking-wider font-semibold transition-all shadow disabled:opacity-50 cursor-pointer"
                 >
                   {status.type === "submitting" ? (
-                    "Transmitting request..."
+                    "Sending..."
                   ) : (
                     <>
                       <Send className="w-3.5 h-3.5" />
-                      Transmit Direct Inquiry
+                      Send Message
                     </>
                   )}
                 </button>

@@ -168,23 +168,23 @@ export default function App() {
     });
   };
 
-  // Hardcoded premium static FAQs details
+  // Frequently Asked Questions
   const faqs = [
     {
-      q: "Why is there no online checkout calendar booking form?",
-      a: "As a luxury boutique brand, we prioritize discretion and direct transaction integrity. All stays are planned as custom guest coordinate dialogs directly with our concierge desk. This protects key itineraries, ensures room selections are tailored, and guarantees premium pricing accuracy."
+      q: "How can I book a room at Hotel 77?",
+      a: "You can book directly by calling us or sending a WhatsApp message. We do not use third-party booking platforms to ensure the best rates and personalized service for our guests."
     },
     {
-      q: "Can I coordinate airport limousine and secure parking arrangements?",
-      a: "Yes. Our senior on-duty concierge will coordinates bespoke airport transport, secret subterranean parking, and specialized secure entry points upon direct request during WhatsApp or phone consultation."
+      q: "What amenities are included in the rooms?",
+      a: "All our rooms include complimentary Wi-Fi, air conditioning, attached bathrooms with hot & cold water, daily housekeeping, comfortable bedding, and essential toiletries."
     },
     {
-      q: "What dining options are available?",
-      a: "Our dining hall offers high-concept customized seasonal menus prepared by Chef de Cuisine. Private buyout reservations or room service degustation are coordinated directly."
+      q: "Is parking available at the hotel?",
+      a: "Yes, we offer ample parking space for our guests at no additional cost."
     },
     {
-      q: "Is there a wellness retreat or indoor pool?",
-      a: "Yes, Hotel 77 houses a private indoor thermal pool sanctuary, massage suites, and fitness training systems accessible solely by our in-house suite residents."
+      q: "Do you offer food and dining services?",
+      a: "Yes, we provide quality meals and room service for our guests. Please contact the front desk for menu options and timings."
     }
   ];
 
@@ -268,7 +268,7 @@ export default function App() {
                 "We discard automated checkout portals because elite service demands active, real-time collaboration with key personnel."
               </p>
               <p className="mt-6 text-sm text-gray-500 font-mono uppercase tracking-widest">
-                — Ground Operations Office, Park Lane
+                — Hotel 77 Management
               </p>
             </section>
 
@@ -326,7 +326,7 @@ export default function App() {
                 <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
                   {gallery.slice(0, 6).map((img) => (
                     <div key={img.id} className="relative aspect-square overflow-hidden rounded-xl border bg-gray-50 group cursor-pointer" onClick={() => handleNavigate("/gallery")}>
-                      <img src={img.url} alt="look preview" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[4s]" referrerPolicy="no-referrer" loading="lazy" decoding="async" />
+                      <img src={img.url} alt="look preview" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[4s]" referrerPolicy="no-referrer" loading="lazy" decoding="async" onError={(e) => { (e.target as HTMLImageElement).src = "/uploads/logo.png"; }} />
                       <div className="absolute inset-0 bg-navy-950/20 group-hover:bg-navy-950/50 transition-colors flex items-center justify-center">
                         <span className="text-[10px] font-mono text-white opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest font-semibold">View Gallery</span>
                       </div>
@@ -417,12 +417,12 @@ export default function App() {
             <section className="max-w-5xl mx-auto px-4 py-8 mb-10" id="homepage-cta-banner">
               <div className="bg-navy-950 text-white rounded-3xl p-8 sm:p-12 text-center space-y-6 relative overflow-hidden">
                 <div className="absolute inset-0 opacity-10">
-                  <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=80" alt="lobby background" className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" />
+                  <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=80" alt="lobby background" className="w-full h-full object-cover" referrerPolicy="no-referrer" loading="lazy" onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
                 </div>
                 <div className="relative z-10 space-y-4">
-                  <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight italic">Coordinate Your Park Lane Escape</h3>
+                  <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight italic">Book Your Stay at Hotel 77</h3>
                   <p className="text-gray-300 text-sm sm:text-base font-light max-w-xl mx-auto">
-                    Initiate a direct dialog with our concierge lounge now. We are fully equipped for discrete coordinates, custom bookings, and room service planning.
+                    Contact us directly via WhatsApp or phone for reservations, inquiries, and custom requests.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center gap-3 justify-center pt-4">
                     <button

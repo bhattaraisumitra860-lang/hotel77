@@ -95,10 +95,10 @@ export default function RoomsSection({
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12" id="rooms-headblock">
           <span className="text-xs font-mono uppercase text-golden-600 tracking-widest block mb-3 font-semibold">
-            Bespoke Sanctuary Suites
+            Our Rooms
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-tight">
-            {filterFeaturedOnly ? "The Featured Suites & Penthouses" : "Our Private Curated Rooms"}
+            {filterFeaturedOnly ? "Featured Rooms" : "All Rooms"}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-gray-700 font-light leading-relaxed">
             Every chamber is balanced with architectural grandeur and peaceful ambiance. Select and initiate a direct consult to confirm availability.
@@ -113,7 +113,7 @@ export default function RoomsSection({
             <Compass className="w-12 h-12 text-gray-300 mx-auto mb-4" />
             <h4 className="font-serif text-xl font-semibold text-gray-900">No matching suites found</h4>
             <p className="mt-2 text-sm text-gray-500 max-w-md mx-auto">
-              Please adjust your search criteria to view other exclusive Park Lane lodgings.
+              Please adjust your search criteria to view other rooms.
             </p>
           </div>
         ) : (
@@ -128,12 +128,13 @@ export default function RoomsSection({
                 {/* Image panel with badge */}
                 <div className="relative h-64 overflow-hidden bg-navy-900">
                   <img
-                    src={room.images[0] || "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80"}
+                    src={room.images[0] || "/uploads/logo.png"}
                     alt={room.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-[4s]"
                     referrerPolicy="no-referrer"
                     loading="lazy"
                     decoding="async"
+                    onError={(e) => { (e.target as HTMLImageElement).src = "/uploads/logo.png"; }}
                   />
                   
                   {/* Category Pill Tag */}
@@ -146,7 +147,7 @@ export default function RoomsSection({
                   {room.featured && (
                     <div className="absolute top-4 right-4 z-10 bg-golden-500 text-white px-2.5 py-1 text-[9px] font-mono tracking-widest uppercase rounded-md shadow-sm flex items-center gap-1">
                       <Sparkles className="w-2.5 h-2.5" />
-                      Signature Collection
+                      Featured
                     </div>
                   )}
                 </div>
@@ -178,14 +179,14 @@ export default function RoomsSection({
                       onClick={() => handleOpenRoomDetails(room)}
                       className="text-xs font-mono uppercase tracking-wider text-gray-900 hover:text-golden-700 underline flex items-center gap-1 transition-all"
                     >
-                      View Suite Features
+                      View Details
                     </button>
                     <button
                       onClick={() => handleWhatsappBooking(room.name)}
                       className="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 border border-transparent text-white rounded-xl text-xs font-mono uppercase tracking-wider transition-all flex items-center gap-1.5 shadow-sm"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
-                      WhatsApp Curation
+                      WhatsApp Booking
                     </button>
                   </div>
 
@@ -203,7 +204,7 @@ export default function RoomsSection({
               onClick={() => onChangePath("/rooms")}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 border-2 border-navy-950 hover:bg-navy-950 hover:text-white rounded-xl text-xs font-mono uppercase tracking-widest text-navy-900 transition-all font-semibold"
             >
-              Discover all suites and layouts
+              View All Rooms
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -229,12 +230,13 @@ export default function RoomsSection({
             <div className="w-full lg:w-3/5 bg-gray-100 flex flex-col relative h-[300px] sm:h-[400px] lg:h-auto">
               <div className="relative w-full h-full">
                 <img
-                  src={selectedRoom.images[activeImageIndex] || "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80"}
+                  src={selectedRoom.images[activeImageIndex] || "/uploads/logo.png"}
                   alt={`${selectedRoom.name} view`}
                   className="w-full h-full object-cover transition-all duration-300"
                   referrerPolicy="no-referrer"
                   loading="lazy"
                   decoding="async"
+                  onError={(e) => { (e.target as HTMLImageElement).src = "/uploads/logo.png"; }}
                 />
 
                 {/* Left / Right chevron helpers for multi-images */}
@@ -323,7 +325,7 @@ export default function RoomsSection({
                 {/* Amenities List */}
                 {selectedRoom.amenities && selectedRoom.amenities.length > 0 && (
                   <div className="mb-8">
-                    <h5 className="text-[10px] font-mono uppercase text-gray-500 tracking-wider mb-3">Custom Room Curation Includes</h5>
+                    <h5 className="text-[10px] font-mono uppercase text-gray-500 tracking-wider mb-3">Amenities</h5>
                     <div className="grid grid-cols-2 gap-2">
                       {selectedRoom.amenities.map((amenity, key) => (
                         <div key={key} className="flex items-center gap-2 text-xs text-gray-700">
@@ -340,10 +342,10 @@ export default function RoomsSection({
               {/* ACTION FOOTER BLOCK */}
               <div className="bg-golden-50/50 border border-golden-100/80 rounded-2xl p-5 mt-4" id="lightbox-cta-box">
                 <span className="text-[10px] font-mono uppercase text-golden-800 tracking-wider block mb-2 font-semibold">
-                  Secure This Sanctuary Room Direct
+                  Book This Room
                 </span>
                 <p className="text-xs text-gray-600 font-light mb-4">
-                  We host no online booking automated checkout channels to keep your transactions private. Contact the concierge directly via one click:
+                  Contact us directly via phone or WhatsApp to check availability and make a reservation:
                 </p>
 
                 <div className="grid grid-cols-2 gap-3">
