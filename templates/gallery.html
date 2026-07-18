@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-xs font-mono uppercase text-amber-600 tracking-widest block mb-3 font-semibold">Gallery</span>
+            <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-tight">Photo Gallery</h2>
+            <p class="mt-4 text-sm sm:text-base text-gray-500 font-light">Browse our hotel exterior, interiors, and rooms.</p>
+        </div>
+
+        {% set categories = data.gallery|map(attribute='category')|unique|list %}
+        <div class="flex flex-wrap justify-center gap-2 mb-10">
+            <button onclick="filterGallery('All')" class="filter-btn active px-5 py-2 rounded-full text-xs font-mono uppercase tracking-wider transition-all cursor-pointer bg-gray-900 text-white shadow-md font-semibold">All</button>
+            {% for cat in categories %}
+            <button onclick="filterGallery('{{ cat }}')" class="filter-btn px-5 py-2 rounded-full text-xs font-mono uppercase tracking-wider transition-all cursor-pointer bg-gray-100 text-gray-600 hover:bg-gray-200">{{ cat }}</button>
+            {% endfor %}
+        </div>
+
+        {% if data.gallery %}
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6" id="gallery-grid">
+            {% for item in data.gallery %}
+            <div class="gallery-item break-inside-avoid relative overflow-hidden rounded-2xl group border border-gray-100 bg-gray-50 shadow-sm hover:shadow-lg transition-all cursor-pointer" data-category="{{ item.category }}" onclick="openLightbox('{{ item.id }}')">
+                <img src="{{ item.url }}" alt="{{ item.caption }}" class="w-full object-cover rounded-2xl transition-transform duration-700 group-hover:scale-105" onerror="this.src='/static/uploads/logo.png'" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-950/85 via-gray-950/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5">
+                    <div class="flex items-center justify-between gap-3 text-white">
+                        <div>
+                            <span class="text-[9px] font-mono tracking-widest text-amber-400 uppercase font-semibold">{{ item.category }}</span>
+                            <p class="font-serif text-sm font-medium tracking-wide mt-1 text-gray-100">{{ item.caption or 'Hotel 77' }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-16 bg-gray-50 rounded-2xl border border-gray-100">
+            <p class="text-gray-500 font-serif">No gallery images available.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 z-50 hidden bg-gray-950/95 backdrop-blur-md flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 z-55 bg-white/10 hover:bg-white text-white hover:text-gray-950 p-2.5 rounded-full border border-white/15 transition-all cursor-pointer">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    </button>
+    <div class="relative max-w-5xl max-h-[75vh] w-full flex items-center justify-center" onclick="event.stopPropagation()">
+        <img id="lightbox-img" src="" alt="Gallery" class="max-w-full max-h-[75vh] object-contain rounded-lg shadow-2xl">
+    </div>
+    <div class="text-center text-white mt-6 max-w-md px-4" onclick="event.stopPropagation()">
+        <span id="lightbox-category" class="text-[10px] font-mono tracking-widest text-amber-500 uppercase font-semibold"></span>
+        <p id="lightbox-caption" class="font-serif text-lg font-light italic mt-2 text-gray-200"></p>
+    </div>
+</div>
+
+<script>
+let galleryItems = {{ data.gallery|tojson }};
+
+function filterGallery(cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('bg-gray-900', 'text-white', 'shadow-md', 'font-semibold');
+        b.classList.add('bg-gray-100', 'text-gray-600');
+    });
+    event.target.classList.add('bg-gray-900', 'text-white', 'shadow-md', 'font-semibold');
+    event.target.classList.remove('bg-gray-100', 'text-gray-600');
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+        if (cat === 'All' || item.dataset.category === cat) {
+            item.style.display = 'inline-block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+function openLightbox(id) {
+    const item = galleryItems.find(i => i.id === id);
+    if (!item) return;
+    document.getElementById('lightbox-img').src = item.url;
+    document.getElementById('lightbox-category').textContent = item.category;
+    document.getElementById('lightbox-caption').textContent = '"' + (item.caption || 'Hotel 77') + '"';
+    document.getElementById('lightbox').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.add('hidden');
+    document.body.style.overflow = '';
+}
+</script>
+{% endblock %}
