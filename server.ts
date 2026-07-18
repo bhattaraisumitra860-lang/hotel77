@@ -11,7 +11,11 @@ import { defaultSettings, defaultRooms, defaultGallery, defaultTestimonials, def
 // Paths
 const DATA_DIR = path.join(process.cwd(), "data");
 const DB_FILE = path.join(DATA_DIR, "cms_db.json");
-const UPLOADS_DIR = path.join(process.cwd(), "public", "uploads");
+
+// Uploads can be in either dist/uploads or public/uploads depending on the environment
+const DIST_UPLOADS_DIR = path.join(process.cwd(), "dist", "uploads");
+const PUBLIC_UPLOADS_DIR = path.join(process.cwd(), "public", "uploads");
+const UPLOADS_DIR = fs.existsSync(DIST_UPLOADS_DIR) ? DIST_UPLOADS_DIR : PUBLIC_UPLOADS_DIR;
 
 // Ensure data folder exists
 if (!fs.existsSync(DATA_DIR)) {
