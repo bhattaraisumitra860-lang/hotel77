@@ -465,7 +465,7 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
 
   // Maintenance & System Controls
   const handleDatabaseReset = async () => {
-    if (!window.confirm("CRITICAL WARNING: This will immediately delete all modified pages, settings, custom suites, testimonials, and clear contact submissions. It will restore the website to the original pristine London Mayfair standard presets. Proceed?")) return;
+    if (!window.confirm("CRITICAL WARNING: This will immediately delete all modified pages, settings, custom suites, testimonials, and clear contact submissions. It will restore the website to the original pristine standard presets. Proceed?")) return;
     try {
       const res = await fetch("/api/admin/reset-db", {
         method: "POST",
@@ -981,7 +981,7 @@ export default function AdminPanel({ onLogout, publicDB, triggerRefresh }: Admin
                         <label className="block text-xs font-mono uppercase text-gray-500 mb-2">Room Amenities (comma separated)</label>
                         <input
                           type="text"
-                          placeholder="Frette Linens, Butler, Private Bar..."
+                          placeholder="Frette Linens, Room Service, Private Bar..."
                           value={editingRoom.amenities?.join(", ") || ""}
                           onChange={(e) => setEditingRoom({ ...editingRoom, amenities: e.target.value.split(",").map(x => x.trim()).filter(Boolean) })}
                           className="w-full bg-gray-50 border border-gray-200 focus:border-golden-600 focus:outline-none rounded-xl px-4 py-3 text-sm text-gray-900"

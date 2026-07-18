@@ -49,7 +49,7 @@ export default function Header({
                 {settings.hotelName || "Hotel 77"}
               </span>
               <span className="text-[9px] uppercase tracking-[0.25em] text-golden-600 block leading-tight font-mono">
-                Mayfair London
+                Luxury Boutique Hotel
               </span>
             </div>
           </div>

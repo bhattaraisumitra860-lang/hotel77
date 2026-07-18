@@ -101,7 +101,7 @@ export default function RoomsSection({
             {filterFeaturedOnly ? "The Featured Suites & Penthouses" : "Our Private Curated Rooms"}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-gray-700 font-light leading-relaxed">
-            Every chamber is balanced with architectural grandeur, pre-stocked custom whiskey cellars, and discrete WhatsApp butler coordinates. Select and initiate a direct consult to confirm availability.
+            Every chamber is balanced with architectural grandeur and peaceful ambiance. Select and initiate a direct consult to confirm availability.
           </p>
         </div>
 

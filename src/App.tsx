@@ -172,15 +172,15 @@ export default function App() {
   const faqs = [
     {
       q: "Why is there no online checkout calendar booking form?",
-      a: "As a distinct central London luxury boutique brand, we prioritize discretion and direct transaction integrity. All stays are planned as custom guest coordinate dialogs directly with our concierge desk. This protects key itineraries, ensures room selections are tailored, and guarantees premium pricing accuracy."
+      a: "As a luxury boutique brand, we prioritize discretion and direct transaction integrity. All stays are planned as custom guest coordinate dialogs directly with our concierge desk. This protects key itineraries, ensures room selections are tailored, and guarantees premium pricing accuracy."
     },
     {
       q: "Can I coordinate airport limousine and secure parking arrangements?",
       a: "Yes. Our senior on-duty concierge will coordinates bespoke airport transport, secret subterranean parking, and specialized secure entry points upon direct request during WhatsApp or phone consultation."
     },
     {
-      q: "What dining options exist in Sartorial Lounge?",
-      a: "Our signature Michelin-calibre dining hall offers high-concept customized seasonal menus prepared by Chef de Cuisine. Private buyout reservations or room service degustation are coordinated directly."
+      q: "What dining options are available?",
+      a: "Our dining hall offers high-concept customized seasonal menus prepared by Chef de Cuisine. Private buyout reservations or room service degustation are coordinated directly."
     },
     {
       q: "Is there a wellness retreat or indoor pool?",
@@ -211,7 +211,7 @@ export default function App() {
       <div className="min-h-screen bg-navy-950 text-white flex items-center justify-center p-6 text-center font-serif">
         <div className="max-w-md space-y-6">
           <Award className="w-16 h-16 text-golden-500 mx-auto animate-pulse" />
-          <h1 className="text-4xl font-extrabold tracking-tight italic">Hotel 77 London</h1>
+          <h1 className="text-4xl font-extrabold tracking-tight italic">Hotel 77</h1>
           <div className="w-20 h-px bg-golden-600 mx-auto" />
           <p className="text-gray-300 font-light text-base leading-relaxed">
             Our digital coordinates are receiving scheduled custom curator updates to serve our distinguished guests with elevated speed.
@@ -227,10 +227,10 @@ export default function App() {
 
   // AMENITIES DATA MODEL
   const amenitiesList = [
-    { icon: <Clock className="w-6 h-6 text-golden-600" />, title: "24/7 Personal Butler Curation", desc: "Private concierge assigned to coordinate custom meals, laundry, entries, and travel." },
-    { icon: <Wifi className="w-6 h-6 text-golden-600" />, title: "Ultraband Acoustic Audio Systems", desc: "Equipped with Bang & Olufsen bespoke noise-filtering acoustics and high fiber access." },
-    { icon: <Wine className="w-6 h-6 text-golden-600" />, title: "Bespoke Whiskey Cabinetry", desc: "Curated collection of aged regional spirits pre-stocked inside your chamber cellar." },
-    { icon: <Utensils className="w-6 h-6 text-golden-600" />, title: "Michelin-Sartorial Fine Dining", desc: "Enjoy private in-room seasonal degustation or table buyouts coordinated anytime." },
+    { icon: <Clock className="w-6 h-6 text-golden-600" />, title: "24/7 Personal Room Service Curation", desc: "Private concierge assigned to coordinate custom meals, laundry, entries, and travel." },
+    { icon: <Wifi className="w-6 h-6 text-golden-600" />, title: "Good WiFi", desc: "High-speed wireless internet access throughout the property." },
+    { icon: <Wine className="w-6 h-6 text-golden-600" />, title: "Peaceful Environment", desc: "Tranquil and relaxing atmosphere for a comfortable stay." },
+    { icon: <Utensils className="w-6 h-6 text-golden-600" />, title: "Good Food", desc: "Enjoy private in-room seasonal degustation or table buyouts coordinated anytime." },
   ];
 
   return (
@@ -262,7 +262,7 @@ export default function App() {
             {/* Premium Slogan Section */}
             <section className="max-w-4xl mx-auto px-4 text-center py-6" id="homepage-slogan">
               <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-golden-600 block mb-4 font-semibold">
-                An Elite London Sanctuary
+                An Elite Sanctuary
               </span>
               <p className="font-serif text-3xl sm:text-4xl text-gray-900 italic font-light leading-snug">
                 "We discard automated checkout portals because elite service demands active, real-time collaboration with key personnel."
@@ -292,7 +292,7 @@ export default function App() {
                     The Hotel 77 Crest
                   </span>
                   <h3 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
-                    Sartorial Amenities &amp; Services
+                    Amenities &amp; Services
                   </h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -422,7 +422,7 @@ export default function App() {
                 <div className="relative z-10 space-y-4">
                   <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight italic">Coordinate Your Park Lane Escape</h3>
                   <p className="text-gray-300 text-sm sm:text-base font-light max-w-xl mx-auto">
-                    Initiate a direct dialog with our Mayfair concierge lounge now. We are fully equipped for discrete coordinates, custom bookings, and butler planning.
+                    Initiate a direct dialog with our concierge lounge now. We are fully equipped for discrete coordinates, custom bookings, and room service planning.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center gap-3 justify-center pt-4">
                     <button
@@ -552,7 +552,7 @@ export default function App() {
               <span className="font-serif text-lg font-bold tracking-widest text-golden-500 uppercase">{settings.hotelName}</span>
             </div>
             <p className="text-gray-400 text-xs sm:text-sm font-light leading-relaxed max-w-sm">
-              An award-winning discrete lodging experience situated high in Westminster, London. We foster customized care over automated reservations queues.
+              An award-winning discrete lodging experience. We foster customized care over automated reservations queues.
             </p>
             <div className="pt-2 text-xs text-gray-500 font-mono flex items-center gap-2">
               <ShieldCheck className="w-4 h-4 text-blue-500" />

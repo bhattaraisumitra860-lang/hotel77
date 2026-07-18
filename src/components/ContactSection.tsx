@@ -82,7 +82,7 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
     return srcMatch ? srcMatch[1] : input;
   };
 
-  const finalMapUrl = getEmbedUrl(settings.googleMapsEmbedUrl) || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.1895648834947!2d-0.1558231!3d51.509355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487605330e2f8955%3A0xe5eb6c7ebd286d99!2sPark%20Ln%2C%20London!5e0!3m2!1sen!2suk!4v1689000000000!5m2!1sen!2suk";
+  const finalMapUrl = getEmbedUrl(settings.googleMapsEmbedUrl);
 
   return (
     <div className="py-16 bg-gray-50" id="contact-section-wrapper">
@@ -97,7 +97,7 @@ export default function ContactSection({ settings, onTrackClick }: ContactSectio
             Initiate Contact
           </h2>
           <p className="mt-4 text-sm sm:text-base text-gray-500 font-light leading-relaxed">
-            Whether organizing discrete airport limousine pickups, setting dining plans, or specifying allergy requirements, our Mayfair operations room is standing by.
+            Whether organizing discrete airport limousine pickups, setting dining plans, or specifying allergy requirements, our operations room is standing by.
           </p>
         </div>
 

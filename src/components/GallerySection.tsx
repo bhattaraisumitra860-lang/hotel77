@@ -56,7 +56,7 @@ export default function GallerySection({ galleryItems }: GallerySectionProps) {
             The Hotel 77 Gallery
           </h2>
           <p className="mt-4 text-sm sm:text-base text-gray-500 font-light leading-relaxed">
-            Glance upon our private Mayfair palazzo exterior, the sleek contemporary interiors of Sartorial restaurant, and meticulously groomed suite coordinates.
+            Glance upon our private exterior, the sleek contemporary interiors, and meticulously groomed suite coordinates.
           </p>
         </div>
 

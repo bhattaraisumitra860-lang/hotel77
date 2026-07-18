@@ -85,7 +85,7 @@ export default function Hero({ settings, onChangePath, onTrackClick }: HeroProps
             ● Direct Phone Support
           </span>
           <span className="flex items-center gap-1.5 grayscale opacity-80">
-            ● bespoke butler curation
+            ● bespoke room service
           </span>
           <span className="flex items-center gap-1.5 grayscale opacity-80">
             ● private car coordinates
